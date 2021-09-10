@@ -16,9 +16,9 @@ public class PerfController {
 //	@ResponseBody
 	public String getData() {
 		
-		int var1 = (int) (Math.random()*101);
-		int var2 = (int) (Math.random()*100);
-		System.out.println(var1 + " - " + var2);
+//		int var1 = (int) (Math.random()*101);
+//		int var2 = (int) (Math.random()*100);
+//		System.out.println(var1 + " - " + var2);
 		
 		/*
 		 * String resp1 = "<?xml version=\"1.0\"?>\n" + "<data>\n" + "	<cpu>" + var1 +

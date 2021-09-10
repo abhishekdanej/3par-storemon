@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.danej</groupId>
 	<artifactId>3par-storemon</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>3par-storemon</name>
 	<description>full stack spring boot project</description>
 	<properties>

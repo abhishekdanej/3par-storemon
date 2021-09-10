@@ -7,11 +7,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 //import hpe3par.base.DriveEnclosure;
 //import hpe3par.base.PhysicalDrive;
 //import utilities.FileWriter;
 
+@Service
 public class CLIDataAccessObject {
 	
 	@Autowired
@@ -75,10 +77,10 @@ public class CLIDataAccessObject {
 	public String getStats() throws IOException {
 		
 		String xml = 
-				"<3par>"
+				"<data>"
 				+ getCPU()
 				+ getCapacity()
-				+ "</3par>";
+				+ "</data>";
 		
 		return xml;
 	}
@@ -149,22 +151,22 @@ public class CLIDataAccessObject {
 			failed = Double.parseDouble(m.group(4))/1024;
 			System.out.println("total: " + total + ", alloc: " + alloc + ", free: " + free + ", failed: " + failed);
 			
-			alloc_pct = Math.round(100*alloc/total);
-			free_pct = Math.round(100*free/total);
-			failed_pct = Math.round(100*failed/total);
+			alloc_pct = (100*alloc/total);
+			free_pct = (100*free/total);
+			failed_pct = (100*failed/total);
 			
 			System.out.println("alloc %: " + alloc_pct
 				+ ", free %: " + free_pct
 				+ ", failed % : " + failed_pct);
 		}
 		
-		xml = "<total_capacity_gb>" + total +  	"</total_capacity_gb>"
-		+ "<allocated_capacity_gb>"	+ alloc + "</allocated_capacity_gb>"
-		+ "<allocated_capacity_pct>"+ alloc_pct + "</allocated_capacity_pct>"
-		+ "<free_capacity_gb>" 		+ free + 	"</free_capacity_gb>"
-		+ "<free_capacity_pct>" 	+ free_pct + 	"</free_capacity_pct>"
-		+ "<failed_capacity_gb>" 	+ failed + 	"</failed_capacity_gb>"
-		+ "<failed_capacity_pct>" 	+ failed_pct + 	"</failed_capacity_pct>";
+		xml = "<total_capacity_gb>" + String.format("%.0f", total) +  	"</total_capacity_gb>"
+		+ "<allocated_capacity_gb>"	+ String.format("%.0f", alloc) + "</allocated_capacity_gb>"
+		+ "<free_capacity_gb>" 		+ String.format("%.0f", free) + 	"</free_capacity_gb>"
+		+ "<failed_capacity_gb>" 	+ String.format("%.0f", failed) + 	"</failed_capacity_gb>"
+		+ "<allocated_capacity_pct>"+ String.format("%.2f", alloc_pct) + "</allocated_capacity_pct>"
+		+ "<free_capacity_pct>" 	+ String.format("%.2f", free_pct) + 	"</free_capacity_pct>"
+		+ "<failed_capacity_pct>" 	+ String.format("%.2f", failed_pct) + 	"</failed_capacity_pct>";
 		
 		System.out.println("Capacity XML: " + xml);
 		
