@@ -1,0 +1,4 @@
+00:02:22 09/11/2021
+node,cpu user sys idle intr/s ctxt/s
+ 0,total    0   2   98  18867  19613
+ 1,total    0   2   98  14103  17508

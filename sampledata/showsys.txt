@@ -1,0 +1,3 @@
+                                                                         ----------------(MB)----------------
+     ID -----Name------ ----Model---- --Serial-- Nodes Master ClusterLED TotalCap AllocCap  FreeCap FailedCap
+0x1D67F 3par.mfdemo.net HPE_3PAR 8200 4C17121222     2      0 Off        40550400 28105728 12444672         0
